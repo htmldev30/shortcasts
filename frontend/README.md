@@ -6,7 +6,7 @@
     <strong>Frontend | ShortCasts</strong>
 </h2>
 <p align="center">
-  <strong>NextJS & TailwindCSS</strong>
+  <strong>React & NextJS & TailwindCSS</strong>
 </p>
 
 ## Frontend | Run Locally

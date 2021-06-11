@@ -6,7 +6,7 @@
     <strong>Backend | ShortCasts</strong>
 </h2>
 <p align="center">
-  <strong>ExpressJS</strong>
+  <strong>Node & ExpressJS</strong>
 </p>
 
 ## Backend | Run Locally

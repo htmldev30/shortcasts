@@ -2,6 +2,10 @@
 
 ## Backend | Run Locally
 
+<p align="center">
+  <strong>Node & ExpressJS</strong>
+</p>
+
 Clone the project
 
 ```bash
@@ -32,6 +36,10 @@ Start the server
 **_No User Auth_**
 
 ## Frontend | Run Locally
+
+<p align="center">
+  <strong>React & NextJS & TailwindCSS</strong>
+</p>
 
 Clone the project
 
