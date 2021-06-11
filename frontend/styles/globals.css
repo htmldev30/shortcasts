@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.default-input-field {
+    @apply w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300
+    rounded shadow-sm appearance-none focus:outline-none focus:border-muted focus:ring-2 focus:ring-highlight;
+}
+.default-file-input-field {
+    @apply w-full h-12 px-4 mb-2 bg-white border border-gray-300
+    rounded shadow-sm appearance-none;
+}
+.default-action-button {
+    @apply w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-500 text-base font-medium text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:ml-3 sm:w-auto sm:text-sm;
+}
+.default-cancel-button {
+    @apply w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm;
+}
+.user-avatar {
+    @apply border-4 rounded-xl border-highlight-500;
+}
