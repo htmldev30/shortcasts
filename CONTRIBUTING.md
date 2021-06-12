@@ -32,15 +32,13 @@ Start the server
 
 ---
 
-**Backend Does Not Have A Hosted Version For Development** <br />
-**_No User Auth_**
-
 ## Frontend | Run Locally
 
 <p align="center">
   <strong>React & NextJS & TailwindCSS</strong>
 </p>
-
+**No Hosted Backend For Development** <br />
+**_No User Auth_**
 Clone the project
 
 ```bash

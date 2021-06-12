@@ -11,7 +11,7 @@
 
 ## Frontend | Run Locally
 
-**Backend Does Not Have A Hosted Version For Development**
+**No Hosted Backend For Development**
 <br />
 **_No User Auth_**
 
