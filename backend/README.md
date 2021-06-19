@@ -6,10 +6,14 @@
     <strong>Backend | ShortCasts</strong>
 </h2>
 <p align="center">
-  <strong>Node & ExpressJS</strong>
+  <strong>NestJS</strong>
 </p>
 
 ## Backend | Run Locally
+
+**No Hosted Backend For Development**
+<br />
+**_No User Auth_**
 
 Clone the project
 
@@ -32,5 +36,5 @@ Install dependencies
 Start the server
 
 ```bash
-  yarn dev
+  yarn start:dev
 ```
