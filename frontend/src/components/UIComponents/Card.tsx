@@ -3,11 +3,14 @@ import React from 'react'
 interface CardProps {
     title: string
     description?: string
-
+    message?: {
+        alert: boolean
+        description: string
+    }
     children?: React.ReactNode
 }
 
-const Card = ({ children, title }: CardProps) => {
+const Card = ({ children, title, message }: CardProps) => {
     return (
         <>
             <div className="overflow-hidden px-4 py-16">
@@ -18,6 +21,19 @@ const Card = ({ children, title }: CardProps) => {
                                 <h3 className="mb-4 text-left font-semibold sm:text-center sm:mb-6 sm:text-xl">
                                     {title}
                                 </h3>
+                                {message ? (
+                                    <span
+                                        className={
+                                            'text-center ' +
+                                            (message.alert
+                                                ? 'text-red-500'
+                                                : null)
+                                        }
+                                    >
+                                        {message.description}
+                                    </span>
+                                ) : null}
+
                                 {children}
                             </div>
                         </div>

@@ -18,32 +18,29 @@ const UserProfileProvider = (props) => {
         []
     )
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            //  ? check if UserProfile is null
-            getData()
-        }
-    }, [isAuthenticated])
+    const [userUpdated, setUserUpdated] = useState(false)
 
-    const getData = async () => {
+    useEffect(() => {
+        if (isAuthenticated || userUpdated) {
+            //  ? check if UserProfile is null
+
+            getUserProfile()
+        }
+    }, [isAuthenticated, userUpdated])
+
+    const getUserProfile = async () => {
         try {
             let mounted = true
             const token = await getAccessTokenSilently()
-            const userId = process.env.DEV_API_USER_URL
+            const userId = user['http://127.0.0.1:3001/user'].userId
             const response = await axios({
                 headers: {
                     'Content-Type': 'application/json',
                     Accept: 'application/json',
                     authorization: `Bearer ${token}`,
                 },
-                method: 'post',
-                url: 'http://127.0.0.1:3001/user',
-                data: {
-                    username: user.nickname,
-                    displayName: user.nickname,
-                    avatar: user.picture,
-                    userId: user['http://127.0.0.1:3001/user'].userId,
-                },
+                method: 'get',
+                url: `http://127.0.0.1:3001/user/${userId}`,
             })
                 .then(function (response) {
                     return response
@@ -51,16 +48,19 @@ const UserProfileProvider = (props) => {
                 .then(function (response) {
                     const userProfile = response.data.userProfile
                     setUserProfile(userProfile)
+                    setUserUpdated(false)
                 })
 
             return () => (mounted = false)
         } catch (error) {
-            console.log(error.message)
+            console.log(error)
         }
     }
 
     return (
-        <UserProfileContext.Provider value={{ userProfile, isAuthenticated }}>
+        <UserProfileContext.Provider
+            value={{ userProfile, isAuthenticated, setUserUpdated }}
+        >
             {props.children}
         </UserProfileContext.Provider>
     )

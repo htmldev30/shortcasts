@@ -2,38 +2,16 @@ import { useContext, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Modal from 'react-modal'
-
-import ExplorePodcastInfo from '../../../modules/explore/ExplorePodcastInfo'
-import { UserProfileContext } from '../../../hooks/context/UserProfileProvider'
-import CreatePodcastForm from '../../../modules/user-podcasts/CreatePodcastForm'
+import axios from 'axios'
+import ExplorePodcastInfo from '../../../../modules/explore/ExplorePodcastInfo'
+import { UserProfileContext } from '../../../../hooks/context/UserProfileProvider'
+import EditPodcastForm from '../../../../modules/user-podcasts/EditPodcastForm'
 import { GetStaticProps, GetStaticPaths } from 'next'
 
 // todo | API that has podcast data; when requested brings data; by user id;
 // todo ? | So all userId's and modal is the one of the actual user podcast|
-export const getStaticPaths: GetStaticPaths = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users')
-    const data = await res.json()
 
-    const paths = data.map((user) => {
-        return {
-            params: { id: user.id.toString() },
-        }
-    })
-    return {
-        paths,
-        fallback: false,
-    }
-}
-export const getStaticProps: GetStaticProps = async (context) => {
-    const id = context.params.id
-    const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id)
-    const data = await res.json()
-
-    return {
-        props: { data: data },
-    }
-}
-const ExploreUserPodcastPage = ({ data }) => {
+const ExploreUserPodcastPage = ({ podcastData }) => {
     const { userProfile, isAuthenticated } = useContext(UserProfileContext)
 
     const router = useRouter()
@@ -52,7 +30,7 @@ const ExploreUserPodcastPage = ({ data }) => {
     return (
         <>
             <Head>
-                <title>{data.name} | ShortCasts</title>
+                <title>{podcastData.title} | ShortCasts</title>
                 <meta name="keywords" content="Manage your account" />
             </Head>
             <Modal
@@ -64,20 +42,43 @@ const ExploreUserPodcastPage = ({ data }) => {
             >
                 <div>
                     {isAuthenticated ? (
-                        <CreatePodcastForm
+                        <EditPodcastForm
                             closeShowModal={closeShowModal}
-                            data={data}
+                            podcastData={podcastData}
                         />
                     ) : (
                         <ExplorePodcastInfo
                             closeShowModal={closeShowModal}
-                            data={data}
+                            data={podcastData}
                         />
                     )}
                 </div>
             </Modal>
         </>
     )
+}
+
+// Todo Add AccessToken or something
+// Getting the query of the url ?? WORKING THO!
+ExploreUserPodcastPage.getInitialProps = async ({
+    query: { podcastId, userId },
+}) => {
+    const response = await axios({
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        },
+        method: 'GET',
+        url: `http://127.0.0.1:3001/user-podcast/${userId}/${podcastId}`,
+    })
+        .then(function (response) {
+            return response
+        })
+        .then(function (response) {
+            return response
+        })
+    const podcastData = response.data.oneUserPodcast
+    return { podcastData: podcastData }
 }
 
 export default ExploreUserPodcastPage

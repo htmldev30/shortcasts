@@ -5,5 +5,6 @@ export interface IUserProfile extends Document {
     readonly displayName: string
     readonly bio: string
     readonly avatar: string
+    readonly isVerified: boolean
     readonly userId: string
 }

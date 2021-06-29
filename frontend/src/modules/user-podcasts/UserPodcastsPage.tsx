@@ -4,9 +4,11 @@ import PodcastsProvider from '../../hooks/context/PodcastsProvider'
 import PodcastLayout from '../../ui/Podcasts/PodcastsLayout'
 import ShrinkLayout from '../../ui/ShrinkLayout'
 import CreatePodcast from './CreatePodcastModal'
-
+import { UserProfileContext } from '../../hooks/context/UserProfileProvider'
+import React, { useContext } from 'react'
 interface DashboardPageProps {}
 const UserPodcastPage = ({}: DashboardPageProps) => {
+    const { isAuthenticated } = useContext(UserProfileContext)
     return (
         <>
             <Head>
@@ -16,7 +18,8 @@ const UserPodcastPage = ({}: DashboardPageProps) => {
 
             <PodcastsProvider>
                 <ShrinkLayout>
-                    <CreatePodcast />
+                    {isAuthenticated ? <CreatePodcast /> : null}
+
                     <PodcastLayout>
                         <Podcast />
                     </PodcastLayout>

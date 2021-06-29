@@ -8,7 +8,9 @@ import LoginIconOutlined from './OutlinedIcons/LoginIconOutlined'
 import UserIconOutlined from './OutlinedIcons/UserIconOutlined'
 import MenuIconOutlined from './OutlinedIcons/MenuIconOutlined'
 import XIconOutlined from './OutlinedIcons/XIconOutlined'
-
+import PauseIconOutlined from './OutlinedIcons/PauseIconOutlined'
+import PlayIconOutlined from './OutlinedIcons/PlayIconOutlined'
+import TriDotHIconOutlined from './OutlinedIcons/TriDotHIconOutlined'
 export {
     HeartIconOutlined,
     FollowersIconOutlined,
@@ -20,4 +22,7 @@ export {
     UserIconOutlined,
     MenuIconOutlined,
     XIconOutlined,
+    PauseIconOutlined,
+    PlayIconOutlined,
+    TriDotHIconOutlined,
 }

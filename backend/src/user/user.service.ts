@@ -10,34 +10,74 @@ export class UserService {
         private readonly userProfileModel: Model<IUserProfile>,
     ) {}
 
+    async getUserProfile(userProfileId): Promise<IUserProfile> {
+        try {
+            const userProfile = await this.userProfileModel
+                .findOne(
+                    {
+                        userId: userProfileId,
+                    },
+                    'username displayName avatar isVerified userId',
+                )
+                .exec()
+
+            return userProfile
+        } catch (error) {
+            return error
+        }
+    }
     // returning from DB so, it's an interface of userProfile
     async createUserProfile(
         createUserProfileDto: CreateUserProfileDto,
     ): Promise<IUserProfile> {
-        const userProfileExists = await this.userProfileModel.findOne({
-            userId: createUserProfileDto.userId,
-        })
-        if (userProfileExists) {
-            return userProfileExists
+        try {
+            const userProfileExists = await this.userProfileModel
+                .findOne({
+                    userId: createUserProfileDto.userId,
+                    // isVerified: createUserProfileDto.isVerified,
+                })
+                .exec()
+            if (userProfileExists) {
+                return userProfileExists
+            }
+
+            //  upsert = true option creates the object if it doesn't exist. defaults to false.
+            const newUserProfile = await this.userProfileModel.findOneAndUpdate(
+                {
+                    userId: createUserProfileDto.userId,
+                },
+                createUserProfileDto,
+                { new: true, upsert: true },
+            )
+
+            return newUserProfile
+        } catch (err) {
+            return err
         }
-
-        const newUserProfile = await new this.userProfileModel(
-            createUserProfileDto,
-        )
-
-        return newUserProfile.save()
     }
 
     async updateUserProfile(
         userId: string,
         updateUserProfile: CreateUserProfileDto,
     ): Promise<IUserProfile> {
-        const updatedUserProfile = await this.userProfileModel.findOneAndUpdate(
-            { userId: userId },
-            updateUserProfile,
-            { new: true },
-        )
+        // Makes sure it doesn't return a 500 and crash the server
 
-        return updatedUserProfile
+        try {
+            const updatedUserProfile =
+                await this.userProfileModel.findOneAndUpdate(
+                    { userId: userId },
+                    updateUserProfile,
+                    {
+                        new: true,
+                        runValidators: true,
+                        useFindAndModify: false,
+                    },
+                )
+
+            return updatedUserProfile
+        } catch (err) {
+            // makes sure its an instance of error
+            return err
+        }
     }
 }

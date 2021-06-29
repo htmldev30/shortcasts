@@ -3,5 +3,6 @@ export class CreateUserProfileDto {
     readonly displayName: string
     readonly bio: string
     readonly avatar: string
+    readonly isVerified: boolean
     readonly userId: string
 }

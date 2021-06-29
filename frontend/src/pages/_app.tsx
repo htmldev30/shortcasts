@@ -1,4 +1,5 @@
 import '../../styles/globals.css'
+
 import { Auth0Provider } from '@auth0/auth0-react'
 import UserProfileProvider from '../hooks/context/UserProfileProvider'
 import { AppProps } from 'next/app'

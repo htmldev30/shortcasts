@@ -5,7 +5,7 @@ interface ShrinkLayoutProps {
 const ShrinkLayout = ({ children }: ShrinkLayoutProps) => {
     return (
         <>
-            <div className="mx-36">{children}</div>
+            <div className="sm:mx-36">{children}</div>
         </>
     )
 }

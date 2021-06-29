@@ -3,7 +3,6 @@ import {
     Controller,
     Get,
     HttpStatus,
-    NotFoundException,
     Param,
     ParseUUIDPipe,
     Post,
@@ -11,12 +10,29 @@ import {
     Res,
 } from '@nestjs/common'
 import { CreateUserProfileDto } from './dto/create-user-profile.dto'
+import { errorFormatter } from './others/error.formatter'
 import { UserService } from './user.service'
 
 @Controller('user')
 export class UserController {
     constructor(private userService: UserService) {}
 
+    @Get('/:userProfileId')
+    async getUserProfile(
+        @Res() res,
+        @Param('userProfileId', new ParseUUIDPipe()) userProfileId,
+    ) {
+        const userProfile = await this.userService.getUserProfile(userProfileId)
+        if (userProfile instanceof Error) {
+            const formattedError = errorFormatter(userProfile)
+
+            return res
+                .status(HttpStatus.BAD_REQUEST)
+                .send({ error: formattedError })
+        }
+
+        return res.status(HttpStatus.OK).json({ userProfile })
+    }
     @Post()
     async createUserProfile(
         @Res() res,
@@ -25,8 +41,16 @@ export class UserController {
         const newUserProfile = await this.userService.createUserProfile(
             createUserProfileDto,
         )
+        // Lets frontend know it's an error
+        if (newUserProfile instanceof Error) {
+            const formattedError = errorFormatter(newUserProfile)
+
+            return res
+                .status(HttpStatus.BAD_REQUEST)
+                .send({ error: formattedError })
+        }
         return res.status(HttpStatus.OK).json({
-            userProfile: newUserProfile,
+            message: 'User Profile Created',
         })
     }
 
@@ -40,11 +64,18 @@ export class UserController {
             userId,
             updateUserProfile,
         )
-        if (!updatedUserProfile) {
-            throw new NotFoundException('User Does Not Exist!')
+
+        // Lets frontend know it's an error
+        if (updatedUserProfile instanceof Error) {
+            const formattedError = errorFormatter(updatedUserProfile)
+
+            return res
+                .status(HttpStatus.BAD_REQUEST)
+                .send({ error: formattedError })
         }
+
         return res.status(HttpStatus.OK).json({
-            userProfile: updatedUserProfile,
+            message: 'user updated successfully',
         })
     }
 }
