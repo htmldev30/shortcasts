@@ -7,6 +7,7 @@
 </h2>
 <p align="center">
   <strong>Making Time To Listen To Podcasts</strong>
+    <strong>Thank You For Helping Me Develop The User Interface of the Website My Friend.</strong>
 </p>
 <p align="center">
   <a href="https://discord.gg/q5nxpQrY">
