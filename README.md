@@ -11,6 +11,7 @@
 </p>
 <p align="center">
   <strong>Thank You For Helping Me Develop The User Interface Of The Website My Friend</strong>
+    <br>
       <strong>This project was also developed with the help of open-source libraries listed in the "package.json" files, and code under the Creative Commons license</strong>
 </p>
 <p align="center">
