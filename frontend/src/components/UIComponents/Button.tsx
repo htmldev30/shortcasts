@@ -1,3 +1,5 @@
+// Code adapted from Ben Awad's DogeHouse Button example (MIT License)
+// https://github.com/benawad/dogehouse/blob/staging/kibbeh/src/ui/Button.tsx
 import React, {
     ButtonHTMLAttributes,
     DetailedHTMLProps,

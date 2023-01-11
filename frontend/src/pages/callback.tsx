@@ -10,7 +10,7 @@ const SetupProfile = () => {
     const { isAuthenticated, user, getAccessTokenSilently } = useAuth0()
     useEffect(() => {
         if (isAuthenticated) {
-            //  ? check if UserProfile is null
+            //  check if UserProfile is null
 
             postUserProfileData()
         }

@@ -1,3 +1,5 @@
+// Code from Ben Awad's DogeHouse InputErrorMsg example (MIT License)
+// https://github.com/benawad/dogehouse/blob/staging/kibbeh/src/ui/InputErrorMsg.tsx
 import React from 'react'
 interface InputErrorMessageProps {}
 

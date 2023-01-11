@@ -1,3 +1,6 @@
+// Code from collaborator on this project. A friend. 
+// Code also adapted from Kitwind.io Free UI (base) Components
+// https://kitwind.io/products/kometa/components
 import DashboardWidget from './DashboardWidget'
 import {
     HeartIconOutlined,

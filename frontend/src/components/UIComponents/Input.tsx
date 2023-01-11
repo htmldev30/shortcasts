@@ -1,3 +1,5 @@
+// Code from Ben Awad's DogeHouse Input example (MIT License)
+// https://github.com/benawad/dogehouse/blob/staging/kibbeh/src/ui/Input.tsx
 import React, { forwardRef } from 'react'
 
 export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {

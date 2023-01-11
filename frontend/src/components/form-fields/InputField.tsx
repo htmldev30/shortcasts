@@ -1,3 +1,5 @@
+// Code adapted from Ben Awad's DogeHouse InputField example (MIT License)
+// https://github.com/benawad/dogehouse/blob/staging/kibbeh/src/form-fields/InputField.tsx
 import React from 'react'
 import { useField } from 'formik'
 import { Input } from '../UIComponents/Input'

@@ -1,3 +1,6 @@
+// Code adapted from NEXT JS Documentation Example "getStaticPaths" and "getStaticProps"
+// https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
+// https://nextjs.org/docs/basic-features/data-fetching/get-static-props
 import { useContext, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -8,8 +11,7 @@ import { UserProfileContext } from '../../../hooks/context/UserProfileProvider'
 import CreatePodcastForm from '../../../modules/user-podcasts/CreatePodcastForm'
 import { GetStaticProps, GetStaticPaths } from 'next'
 
-// todo | API that has podcast data; when requested brings data; by user id;
-// todo ? | So all userId's and modal is the one of the actual user podcast|
+
 export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users')
     const data = await res.json()

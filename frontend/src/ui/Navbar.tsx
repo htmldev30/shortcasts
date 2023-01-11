@@ -1,3 +1,5 @@
+// Code adapted from Kitwind.io free use UI KIT: Navbars
+// https://kitwind.io/products/kometa/components/navs
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'

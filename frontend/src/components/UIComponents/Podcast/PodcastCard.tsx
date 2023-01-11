@@ -1,3 +1,5 @@
+// Code adapted from Kitwind.io Free UI (base) Components
+// https://kitwind.io/products/kometa/components
 import React, { useState } from 'react'
 import Link from 'next/link'
 import {

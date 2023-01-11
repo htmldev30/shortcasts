@@ -1,3 +1,5 @@
+// Code adapted from Bye-fe's GitHub, React-Model (MIT LICENSE)
+// https://www.npmjs.com/package/react-model
 import { useState } from 'react'
 import Modal from 'react-modal'
 import CreatePodcastForm from './CreatePodcastForm'

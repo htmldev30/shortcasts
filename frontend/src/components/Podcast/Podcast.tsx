@@ -39,7 +39,7 @@ const Podcast: React.FC = () => {
                         customAdditionalControls={[]}
                         src={`http://${data.podcastAudioFile}`}
                         onPlay={(e) => console.log('onPlay')}
-                        // other props here
+              
                     />
                 </PodcastCard>
             ))}

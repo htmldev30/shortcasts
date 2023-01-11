@@ -1,3 +1,5 @@
+// Code adapted from Vincas Stonys' Codefrontend.com Tutorial (MIT License)
+// https://codefrontend.com/file-upload-reactjs/
 import { Formik, Form, Field } from 'formik'
 import { InputField } from '../../components/form-fields/InputField'
 import Button from '../../components/UIComponents/Button'

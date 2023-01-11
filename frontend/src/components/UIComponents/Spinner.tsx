@@ -1,3 +1,5 @@
+// Code from Ben Awad's DogeHouse Spinner example (MIT License)
+// https://github.com/benawad/dogehouse/blob/staging/kibbeh/src/ui/Spinner.tsx
 import React, { FunctionComponent } from 'react'
 const sizes = {
     '2': 'h-2 w-2',
